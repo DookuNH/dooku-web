@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dooku — Consultora de eCommerce</title>
+  <meta name="description" content="Consultora de eCommerce certificada en Mercado Libre y Tienda Nube. Sellers que asesoran Sellers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #1E1D1B;
+      --red: #DC4633;
+      --cream: #F1EAE6;
+      --purple: #C9B4D3;
+      --green: #5CB85C;
+      --dim: rgba(241,234,230,.55);
+      --border: rgba(241,234,230,.08);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background:var(--dark);
+      color:var(--cream);
+      font-family:'Inter',sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 5vw;
+      background:rgba(30,29,27,.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-logo img {
+      height:24px; width:auto;
+      filter:invert(1); mix-blend-mode:screen; opacity:.9;
+    }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a {
+      color:var(--dim); text-decoration:none;
+      font-size:.82rem; font-weight:500; transition:color .2s;
+    }
+    .nav-links a:hover { color:var(--cream); }
+    .nav-cta {
+      background:var(--red); color:var(--cream);
+      padding:.5rem 1.25rem; border-radius:100px;
+      text-decoration:none; font-size:.82rem; font-weight:700;
+      transition:opacity .2s;
+    }
+    .nav-cta:hover { opacity:.82; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height:100vh;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center;
+      padding:7rem 5vw 5rem;
+      position:relative; overflow:hidden;
+    }
+    .hero-glow {
+      position:absolute; top:-20%; left:50%; transform:translateX(-50%);
+      width:900px; height:900px;
+      background:radial-gradient(circle, rgba(220,70,51,.13) 0%, transparent 65%);
+      pointer-events:none;
+    }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:.45rem;
+      background:rgba(241,234,230,.06);
+      border:1px solid rgba(241,234,230,.12);
+      border-radius:100px; padding:.38rem 1rem;
+      font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+      color:var(--cream); margin-bottom:1.8rem;
+    }
+    .hero-badge .dot { color:var(--red); }
+    .hero-logo {
+      margin-bottom:1.8rem; position:relative; z-index:1;
+    }
+    .hero-logo img {
+      width:clamp(180px,28vw,360px); height:auto;
+      filter:invert(1); mix-blend-mode:screen; opacity:.95;
+    }
+    .hero h1 {
+      font-size:clamp(2.2rem,5.5vw,4.2rem);
+      font-weight:900; line-height:1.12; margin-bottom:1.1rem;
+      position:relative; z-index:1;
+    }
+    .hero h1 em { font-style:normal; color:var(--red); }
+    .hero-sub {
+      font-size:clamp(.95rem,1.8vw,1.15rem);
+      color:var(--dim); max-width:520px; margin-bottom:2.5rem;
+      position:relative; z-index:1;
+    }
+    .hero-buttons {
+      display:flex; gap:1rem; flex-wrap:wrap;
+      justify-content:center; position:relative; z-index:1;
+    }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:.45rem;
+      background:var(--red); color:var(--cream);
+      padding:.8rem 1.7rem; border-radius:100px;
+      text-decoration:none; font-size:.92rem; font-weight:700;
+      transition:opacity .2s, transform .2s;
+    }
+    .btn-primary:hover { opacity:.85; transform:translateY(-2px); }
+    .btn-secondary {
+      display:inline-flex; align-items:center; gap:.45rem;
+      background:transparent; color:var(--cream);
+      padding:.8rem 1.7rem; border-radius:100px;
+      border:1.5px solid rgba(241,234,230,.22);
+      text-decoration:none; font-size:.92rem; font-weight:600;
+      transition:border-color .2s, transform .2s;
+    }
+    .btn-secondary:hover { border-color:rgba(241,234,230,.55); transform:translateY(-2px); }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:2px; margin:0; overflow:hidden;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+    .stat {
+      padding:2.2rem 1rem; text-align:center;
+      background:rgba(30,29,27,.7);
+      border-right:1px solid var(--border);
+    }
+    .stat:last-child { border-right:none; }
+    .stat-n {
+      font-size:clamp(1.9rem,3vw,2.6rem);
+      font-weight:900; color:var(--cream); line-height:1;
+      margin-bottom:.35rem;
+    }
+    .stat-n em { font-style:normal; color:var(--red); }
+    .stat-l { font-size:.78rem; color:var(--dim); font-weight:500; }
+
+    /* ── SECTION COMMONS ── */
+    .sec {
+      padding:6rem 5vw;
+      max-width:1160px; margin:0 auto;
+    }
+    .label {
+      font-size:.72rem; font-weight:700; letter-spacing:.12em;
+      text-transform:uppercase; color:var(--red); margin-bottom:.7rem;
+    }
+    .sec-title {
+      font-size:clamp(1.8rem,3.5vw,2.7rem);
+      font-weight:800; line-height:1.2; margin-bottom:.9rem;
+    }
+    .sec-sub {
+      font-size:.97rem; color:var(--dim); max-width:520px; line-height:1.75;
+    }
+    hr.divider {
+      border:none; height:1px;
+      background:var(--border); margin:0 5vw;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:4rem; align-items:center; margin-top:3rem;
+    }
+    .about-card {
+      background:linear-gradient(135deg,rgba(220,70,51,.1),rgba(201,180,211,.06));
+      border:1px solid rgba(220,70,51,.18);
+      border-radius:20px; padding:2.4rem;
+    }
+    .big-quote {
+      font-family:'Caveat',cursive;
+      font-size:1.9rem; line-height:1.35; color:var(--cream);
+      margin-bottom:1.2rem;
+    }
+    .big-quote em { font-style:normal; color:var(--red); }
+    .about-p { font-size:.9rem; color:var(--dim); line-height:1.75; }
+    .alclick-link {
+      display:inline-flex; align-items:center; gap:.5rem;
+      background:rgba(92,184,92,.1); border:1px solid rgba(92,184,92,.22);
+      border-radius:10px; padding:.5rem 1rem;
+      font-size:.82rem; font-weight:600; color:var(--green);
+      text-decoration:none; margin-top:1.4rem; transition:background .2s;
+    }
+    .alclick-link:hover { background:rgba(92,184,92,.18); }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1.4rem; margin-top:3rem;
+    }
+    .svc-card {
+      background:rgba(241,234,230,.03);
+      border:1px solid var(--border);
+      border-radius:20px; padding:2rem;
+      transition:border-color .3s, transform .3s;
+      display:flex; flex-direction:column;
+    }
+    .svc-card:hover { border-color:rgba(220,70,51,.3); transform:translateY(-4px); }
+    .svc-card.featured {
+      border-color:rgba(220,70,51,.28);
+      background:rgba(220,70,51,.05);
+    }
+    .svc-tag {
+      display:inline-block; font-size:.65rem; font-weight:700;
+      letter-spacing:.07em; text-transform:uppercase;
+      padding:.22rem .65rem; border-radius:100px; margin-bottom:1.1rem;
+    }
+    .tag-std { background:rgba(241,234,230,.07); color:var(--dim); }
+    .tag-custom { background:rgba(220,70,51,.14); color:var(--red); }
+    .svc-icon { font-size:1.8rem; margin-bottom:.8rem; }
+    .svc-name { font-size:1.2rem; font-weight:700; margin-bottom:.6rem; }
+    .svc-desc { font-size:.87rem; color:var(--dim); line-height:1.7; }
+    .svc-list {
+      list-style:none; margin-top:1.1rem;
+      display:flex; flex-direction:column; gap:.45rem;
+      margin-top:auto; padding-top:1.1rem;
+    }
+    .svc-list li {
+      font-size:.82rem; color:var(--dim);
+      display:flex; align-items:flex-start; gap:.45rem;
+    }
+    .svc-list li::before { content:'→'; color:var(--red); flex-shrink:0; }
+
+    /* ── VIDEOS ── */
+    .videos-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1.4rem; margin-top:3rem;
+    }
+    .video-item {}
+    .video-wrap {
+      position:relative; padding-bottom:56.25%; height:0;
+      border-radius:14px; overflow:hidden;
+      background:rgba(241,234,230,.04);
+      border:1px solid var(--border);
+    }
+    .video-wrap iframe {
+      position:absolute; top:0; left:0;
+      width:100%; height:100%; border:none;
+    }
+    .video-lbl {
+      margin-top:.6rem; font-size:.78rem;
+      color:var(--dim); font-weight:500;
+    }
+
+    /* ── SKOOL ── */
+    .skool-wrap {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:4rem; align-items:start; margin-top:3rem;
+    }
+    .skool-perks {
+      display:flex; flex-direction:column; gap:1.4rem;
+    }
+    .perk {
+      display:flex; align-items:flex-start; gap:1rem;
+      background:rgba(241,234,230,.03);
+      border:1px solid var(--border);
+      border-radius:14px; padding:1.2rem 1.4rem;
+      transition:border-color .2s;
+    }
+    .perk:hover { border-color:rgba(220,70,51,.25); }
+    .perk-icon { font-size:1.5rem; flex-shrink:0; margin-top:.1rem; }
+    .perk-title { font-size:.92rem; font-weight:700; margin-bottom:.25rem; }
+    .perk-text { font-size:.82rem; color:var(--dim); line-height:1.6; }
+
+    /* ── FEATURED VIDEO ── */
+    .featured-video { margin-top:2.5rem; }
+    .featured-video .video-wrap {
+      max-width:820px; margin:0 auto;
+      position:relative; padding-bottom:56.25%; height:0;
+      border-radius:18px; overflow:hidden;
+      border:1px solid var(--border);
+      background:rgba(241,234,230,.03);
+    }
+    .featured-video .video-wrap iframe {
+      position:absolute; top:0; left:0;
+      width:100%; height:100%; border:none;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      background:linear-gradient(135deg,rgba(220,70,51,.08),rgba(30,29,27,0));
+      border:1px solid rgba(220,70,51,.15);
+      border-radius:24px; padding:5rem 2rem;
+      max-width:680px; margin:0 auto; text-align:center;
+    }
+    .contact-wrap .sec-title { font-size:clamp(1.6rem,3vw,2.3rem); }
+    .contact-wrap .sec-sub { max-width:400px; margin:1rem auto 2.4rem; }
+    .contact-buttons {
+      display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;
+    }
+    .contact-note {
+      margin-top:1.8rem; font-size:.75rem;
+      color:rgba(241,234,230,.25);
+    }
+    .contact-note a { color:rgba(241,234,230,.4); text-decoration:none; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align:center;
+      padding:2rem 5vw;
+      border-top:1px solid var(--border);
+      color:rgba(241,234,230,.22); font-size:.76rem;
+    }
+    footer a { color:rgba(241,234,230,.38); text-decoration:none; }
+    .footer-quote {
+      font-family:'Caveat',cursive;
+      font-size:.95rem; color:rgba(241,234,230,.3);
+      margin-top:.4rem;
+    }
+    .footer-quote em { font-style:normal; color:var(--red); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:860px) {
+      .stats-strip { grid-template-columns:repeat(2,1fr); }
+      .about-grid { grid-template-columns:1fr; gap:2rem; }
+      .services-grid { grid-template-columns:1fr; }
+      .videos-grid { grid-template-columns:1fr; }
+      .skool-wrap { grid-template-columns:1fr; gap:2rem; }
+      .nav-links { display:none; }
+    }
+    @media (max-width:480px) {
+      .stats-strip { grid-template-columns:1fr 1fr; }
+      .hero { padding:6rem 6vw 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo-claim.png" alt="Dooku">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#comunidad">Comunidad</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="https://wa.me/5491166136416?text=Hola%20Dooku%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" class="nav-cta" target="_blank">
+    Escribinos
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <span class="dot">✦</span> Consultora Certificada Gold · Mercado Libre &amp; Tienda Nube
+  </div>
+  <div class="hero-logo">
+    <img src="logo-claim.png" alt="Dooku">
+  </div>
+  <h1>Sellers que<br>asesoran <em>Sellers</em></h1>
+  <p class="hero-sub">
+    No somos una agencia de Marketing. Somos un equipo de expertos apasionados en e-commerce que combina la experiencia práctica de vendedores con la visión estratégica de consultores.
+  </p>
+  <div class="hero-buttons">
+    <a href="https://wa.me/5491166136416?text=Hola%20Dooku%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" class="btn-primary" target="_blank">
+      💬 Escribinos por WhatsApp
+    </a>
+    <a href="#SKOOL_URL_AQUI" class="btn-secondary" target="_blank">
+      🎓 Únete a la comunidad
+    </a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat">
+    <div class="stat-n">10<em>+</em></div>
+    <div class="stat-l">Años vendiendo online</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n">3<em>+</em></div>
+    <div class="stat-l">Años como Consultora Certificada</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n"><em>+</em>10</div>
+    <div class="stat-l">Marketplaces donde operamos</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n">🥇</div>
+    <div class="stat-l">Certificación Gold Mercado Libre</div>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section class="sec" id="nosotros">
+  <hr class="divider" style="margin:0 0 4rem;">
+  <div class="label">¿Quiénes somos?</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="sec-title">Sabemos lo que es<br>estar del otro lado</h2>
+      <p class="sec-sub">
+        En Dooku no solo asesoramos: operamos nuestra propia tienda <strong>AlClick</strong>, donde competimos día a día en Mercado Libre y Tienda Nube. Eso nos da un diferencial que ninguna agencia puede replicar: autoridad de trinchera, no de teoría.
+      </p>
+      <p class="sec-sub" style="margin-top:1rem;">
+        Además, tenemos experiencia vendiendo en más de 10 marketplaces: <strong>ICBC Mall, Frávega, Banco Nación, Provincia Tienda, Shell</strong> y muchos más.
+      </p>
+      <a href="https://alclick.com.ar" target="_blank" class="alclick-link">
+        🛒 Conocé AlClick — nuestra tienda propia
+      </a>
+    </div>
+    <div class="about-card">
+      <div class="big-quote">"No solo te decimos<br>qué hacer —<br>lo hacemos <em>nosotros también</em>"</div>
+      <p class="about-p">
+        Operamos una cuenta real con los mismos desafíos que los tuyos: algoritmos, logística, competencia y publicidad. Eso nos da la calle para asesorarte desde la experiencia genuina.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios">
+  <div class="label">Servicios</div>
+  <h2 class="sec-title">¿Cómo trabajamos?</h2>
+  <p class="sec-sub">Dos servicios estándar para escalar rápido, y un tercero diseñado a medida para proyectos de mayor escala.</p>
+
+  <div class="services-grid">
+
+    <div class="svc-card">
+      <span class="svc-tag tag-std">Enlatado</span>
+      <div class="svc-icon">⚙️</div>
+      <div class="svc-name">Gestión de cuenta</div>
+      <p class="svc-desc">Nos hacemos cargo de tu operación completa en Mercado Libre y/o Tienda Nube. Vos te enfocás en el producto, nosotros en la ejecución.</p>
+      <ul class="svc-list">
+        <li>Gestión de publicaciones y catálogo</li>
+        <li>Atención al cliente y reputación</li>
+        <li>Campañas de publicidad (Product Ads)</li>
+        <li>Reportes y optimización continua</li>
+      </ul>
+    </div>
+
+    <div class="svc-card">
+      <span class="svc-tag tag-std">Enlatado</span>
+      <div class="svc-icon">🎯</div>
+      <div class="svc-name">Consultoría estratégica</div>
+      <p class="svc-desc">Preferís operar vos mismo. Te damos el mapa: auditoría, hoja de ruta y acompañamiento para tomar mejores decisiones.</p>
+      <ul class="svc-list">
+        <li>Auditoría de cuenta y competencia</li>
+        <li>Estrategia de precios y posicionamiento</li>
+        <li>Optimización de fichas y keywords</li>
+        <li>Seguimiento mensual de resultados</li>
+      </ul>
+    </div>
+
+    <div class="svc-card featured">
+      <span class="svc-tag tag-custom">A medida</span>
+      <div class="svc-icon">🚀</div>
+      <div class="svc-name">Estrategia integral</div>
+      <p class="svc-desc">Para marcas que quieren escalar de verdad. Trabajamos en conjunto como parte de tu equipo con un plan personalizado.</p>
+      <ul class="svc-list">
+        <li>Diagnóstico profundo del negocio</li>
+        <li>Estrategia omnicanal (MELI + Tienda Nube)</li>
+        <li>Equipo dedicado y reuniones periódicas</li>
+        <li>KPIs, métricas y reporting ejecutivo</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMUNIDAD SKOOL -->
+<section class="sec" id="comunidad">
+  <div class="skool-wrap">
+    <div class="skool-left">
+      <div class="label">Comunidad gratuita</div>
+      <h2 class="sec-title">Aprendé a vender online<br>con quienes <em style="font-style:normal;color:var(--red)">lo hacen de verdad</em></h2>
+      <p class="sec-sub" style="max-width:460px;">
+        Creamos una comunidad de vendedores 100% gratuita en Skool donde compartimos estrategias reales, respondemos dudas y nos acompañamos para crecer juntos en el mundo del e-commerce.
+      </p>
+      <p class="sec-sub" style="max-width:460px;margin-top:1rem;">
+        No te vamos a cobrar nada. Solo queremos que más vendedores puedan acceder al conocimiento que a nosotros nos llevó años construir.
+      </p>
+      <div style="margin-top:2rem;">
+        <a href="#SKOOL_URL_AQUI" class="btn-primary" target="_blank" style="font-size:1rem;padding:.9rem 2rem;">
+          🎓 Unirme gratis a la comunidad
+        </a>
+      </div>
+    </div>
+    <div class="skool-perks">
+      <div class="perk">
+        <div class="perk-icon">📚</div>
+        <div>
+          <div class="perk-title">Contenido exclusivo</div>
+          <div class="perk-text">Guías, estrategias y casos reales de cuentas que gestionamos.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">💬</div>
+        <div>
+          <div class="perk-title">Comunidad activa</div>
+          <div class="perk-text">Preguntá, compartí y aprendé con otros vendedores que están en la misma.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">🎯</div>
+        <div>
+          <div class="perk-title">Acceso directo al equipo</div>
+          <div class="perk-text">El equipo de Dooku responde dudas dentro de la comunidad, sin costo.</div>
+        </div>
+      </div>
+      <div class="perk">
+        <div class="perk-icon">🚀</div>
+        <div>
+          <div class="perk-title">Eventos y lives</div>
+          <div class="perk-text">Clases en vivo, análisis de cuentas y novedades del ecosistema MELI.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VIDEO CONSULTORA -->
+<section class="sec" id="conocenos">
+  <div class="label">Conocenos</div>
+  <h2 class="sec-title">¿Quiénes están detrás<br>de Dooku?</h2>
+  <p class="sec-sub">Mirá este video y entendé de primera mano quiénes somos, cómo trabajamos y por qué somos distintos.</p>
+  <div class="featured-video">
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID_PRINCIPAL" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACTO -->
+<section class="sec" id="contacto">
+  <div class="contact-wrap">
+    <div class="label">Contacto</div>
+    <h2 class="sec-title">¿Listo para escalar<br>tu negocio?</h2>
+    <p class="sec-sub">Contanos tu situación y te decimos sin compromiso cómo podemos ayudarte.</p>
+    <div class="contact-buttons">
+      <a href="https://wa.me/5491166136416?text=Hola%20Dooku%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" class="btn-primary" target="_blank">
+        💬 WhatsApp
+      </a>
+      <a href="#SKOOL_URL_AQUI" class="btn-secondary" target="_blank">
+        🎓 Comunidad Skool
+      </a>
+    </div>
+    <p class="contact-note">
+      También podés escribirnos a <a href="mailto:hola@dooku.com.ar">hola@dooku.com.ar</a>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Dooku · Consultora de eCommerce · <a href="https://alclick.com.ar" target="_blank">AlClick</a></p>
+  <p class="footer-quote">El futuro no está escrito. <em>Aún.</em></p>
+</footer>
+
+</body>
+</html>
