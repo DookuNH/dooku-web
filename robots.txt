@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.dooku.com.ar/sitemap.xml
+
+# Crawl-delay (opcional, para no sobrecargar)
+Crawl-delay: 1
