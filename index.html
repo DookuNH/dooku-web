@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ── GOOGLE ANALYTICS 4 ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VYQXGVWB38"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VYQXGVWB38');
+  </script>
+
   <!-- ── SEO PRIMARIO ── -->
   <title>Dooku | Consultora de eCommerce Certificada Gold Mercado Libre Argentina</title>
   <meta name="description" content="Dooku es una consultora de eCommerce certificada Gold en Mercado Libre y Tienda Nube. Más de 10 años vendiendo online, +10 marketplaces. Gestión, Consultoría y Estrategia para escalar tu negocio en Argentina.">
@@ -448,6 +457,80 @@
       width:100%; height:100%; border:none;
     }
 
+    /* ── AUDIT CTA ── */
+    .audit-wrap {
+      position:relative;
+      background:linear-gradient(135deg,rgba(220,70,51,.16),rgba(201,180,211,.04));
+      border:1px solid rgba(220,70,51,.32);
+      border-radius:24px; padding:4rem 3rem;
+      max-width:980px; margin:0 auto;
+      overflow:hidden;
+    }
+    .audit-wrap::before {
+      content:""; position:absolute; top:-50%; right:-20%;
+      width:600px; height:600px;
+      background:radial-gradient(circle, rgba(220,70,51,.18) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .audit-grid {
+      position:relative; z-index:1;
+      display:grid; grid-template-columns:1.3fr 1fr;
+      gap:3rem; align-items:center;
+    }
+    .audit-badge {
+      display:inline-flex; align-items:center; gap:.4rem;
+      background:rgba(220,70,51,.18);
+      border:1px solid rgba(220,70,51,.4);
+      border-radius:100px; padding:.4rem 1rem;
+      font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--red); margin-bottom:1.4rem;
+    }
+    .audit-title {
+      font-size:clamp(1.7rem,3.2vw,2.5rem);
+      font-weight:800; line-height:1.18; margin-bottom:1.1rem;
+    }
+    .audit-title em { font-style:normal; color:var(--red); }
+    .audit-sub {
+      font-size:.97rem; color:var(--dim); line-height:1.75;
+      margin-bottom:1.6rem; max-width:480px;
+    }
+    .audit-criteria {
+      list-style:none; display:flex; flex-direction:column; gap:.55rem;
+      margin-bottom:2rem;
+    }
+    .audit-criteria li {
+      font-size:.9rem; color:var(--cream);
+      display:flex; align-items:flex-start; gap:.65rem;
+    }
+    .audit-criteria li::before {
+      content:"✓"; color:var(--green); font-weight:900; flex-shrink:0;
+    }
+    .audit-card {
+      background:rgba(30,29,27,.6);
+      border:1px solid var(--border);
+      border-radius:18px; padding:2rem;
+      backdrop-filter:blur(8px);
+    }
+    .audit-card-title {
+      font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--dim); margin-bottom:1rem;
+    }
+    .audit-range {
+      font-size:clamp(1.6rem,2.6vw,2.1rem);
+      font-weight:900; line-height:1.1; margin-bottom:.4rem;
+    }
+    .audit-range em { font-style:normal; color:var(--red); }
+    .audit-range-sub {
+      font-size:.82rem; color:var(--dim); margin-bottom:1.6rem;
+    }
+    .audit-meta {
+      display:flex; flex-direction:column; gap:.6rem;
+      padding-top:1.2rem; border-top:1px solid var(--border);
+      font-size:.82rem; color:var(--dim);
+    }
+    .audit-meta-row { display:flex; align-items:center; gap:.55rem; }
+    .audit-meta-row span:first-child { color:var(--red); font-size:.95rem; }
+
     /* ── CONTACT ── */
     .contact-wrap {
       background:linear-gradient(135deg,rgba(220,70,51,.08),rgba(30,29,27,0));
@@ -514,6 +597,8 @@
       .services-grid { grid-template-columns:1fr; }
       .videos-grid { grid-template-columns:1fr; }
       .skool-wrap { grid-template-columns:1fr; gap:2rem; }
+      .audit-grid { grid-template-columns:1fr; gap:2rem; }
+      .audit-wrap { padding:2.8rem 1.6rem; }
       .nav-links { display:none; }
     }
     @media (max-width:480px) {
@@ -532,6 +617,7 @@
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#auditoria">Auditoría gratis</a></li>
     <li><a href="#comunidad">Comunidad</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -658,6 +744,42 @@
       </ul>
     </div>
 
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- AUDITORÍA GRATUITA -->
+<section class="sec" id="auditoria">
+  <div class="audit-wrap">
+    <div class="audit-grid">
+      <div>
+        <div class="audit-badge">✦ Sin costo · Sin compromiso</div>
+        <h2 class="audit-title">Auditamos tu cuenta de<br>Mercado Libre <em>gratis</em></h2>
+        <p class="audit-sub">
+          Si vendés entre <strong>$20M y $100M al mes</strong> en Mercado Libre, reservá una reunión con nuestro equipo. Vamos a revisar tu cuenta y mostrarte oportunidades concretas para crecer.
+        </p>
+        <ul class="audit-criteria">
+          <li>Diagnóstico de publicaciones, reputación y posicionamiento</li>
+          <li>Análisis de tu inversión actual en Product Ads</li>
+          <li>Detección de oportunidades de crecimiento inmediato</li>
+          <li>Recomendaciones accionables, te asesoremos o no</li>
+        </ul>
+        <a href="https://calendly.com/dooku/dooku-primer-encuentro" class="btn-primary" target="_blank" style="font-size:1rem;padding:.95rem 2rem;">
+          📅 Reservar mi auditoría gratis
+        </a>
+      </div>
+      <div class="audit-card">
+        <div class="audit-card-title">Esta auditoría es para vos si:</div>
+        <div class="audit-range">Facturás <em>$20M – $100M</em></div>
+        <div class="audit-range-sub">mensuales en Mercado Libre</div>
+        <div class="audit-meta">
+          <div class="audit-meta-row"><span>⏱️</span><span>Reunión de 30 minutos por Google Meet</span></div>
+          <div class="audit-meta-row"><span>🎯</span><span>Foco 100% en tu cuenta, sin pitch genérico</span></div>
+          <div class="audit-meta-row"><span>🤝</span><span>Cero compromiso de contratación posterior</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
