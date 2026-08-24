@@ -166,14 +166,6 @@
           "@type": "Answer",
           "text": "Para contratar los servicios de Dooku podés escribir por WhatsApp al +54 9 11 6613-6416 o completar el formulario de contacto en www.dooku.com.ar. El equipo responde sin compromiso y evalúa la situación de cada cuenta para recomendar el servicio más adecuado."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Dooku tiene una comunidad gratuita?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. Dooku tiene una comunidad gratuita de vendedores en Skool donde comparte estrategias reales, responde dudas y organiza clases en vivo y análisis de cuentas. Es completamente gratuita y está abierta a cualquier vendedor que quiera aprender sobre eCommerce."
-        }
       }
     ]
   }
@@ -439,26 +431,6 @@
       color:var(--dim); font-weight:500;
     }
 
-    /* ── SKOOL ── */
-    .skool-wrap {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:4rem; align-items:start; margin-top:3rem;
-    }
-    .skool-perks {
-      display:flex; flex-direction:column; gap:1.4rem;
-    }
-    .perk {
-      display:flex; align-items:flex-start; gap:1rem;
-      background:rgba(241,234,230,.03);
-      border:1px solid var(--border);
-      border-radius:14px; padding:1.2rem 1.4rem;
-      transition:border-color .2s;
-    }
-    .perk:hover { border-color:rgba(220,70,51,.25); }
-    .perk-icon { font-size:1.5rem; flex-shrink:0; margin-top:.1rem; }
-    .perk-title { font-size:.92rem; font-weight:700; margin-bottom:.25rem; }
-    .perk-text { font-size:.82rem; color:var(--dim); line-height:1.6; }
-
     /* ── FEATURED VIDEO ── */
     .featured-video { margin-top:2.5rem; }
     .featured-video .video-wrap {
@@ -639,7 +611,6 @@
       .about-grid { grid-template-columns:1fr; gap:2rem; }
       .services-grid { grid-template-columns:1fr; }
       .videos-grid { grid-template-columns:1fr; }
-      .skool-wrap { grid-template-columns:1fr; gap:2rem; }
       .audit-grid { grid-template-columns:1fr; gap:2rem; }
       .audit-wrap { padding:2.8rem 1.6rem; }
       .nav-links { display:none; }
@@ -666,7 +637,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#auditoria">Auditoría gratis</a></li>
-    <li><a href="#comunidad">Comunidad</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a href="https://wa.me/5491166136416?text=Hola%20Dooku%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" class="nav-cta" target="_blank">
@@ -691,8 +661,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://wa.me/5491166136416?text=Hola%20Dooku%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" class="btn-primary" target="_blank">
       💬 Escribinos por WhatsApp
     </a>
-    <a href="https://www.skool.com/dooku-2944/about" class="btn-secondary" target="_blank">
-      🎓 Únete a la comunidad
+    <a href="#auditoria" class="btn-secondary">
+      🔎 Auditá tu cuenta gratis
     </a>
   </div>
 </section>
@@ -833,59 +803,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <hr class="divider">
 
-<!-- COMUNIDAD SKOOL -->
-<section class="sec" id="comunidad">
-  <div class="skool-wrap">
-    <div class="skool-left">
-      <div class="label">Comunidad gratuita</div>
-      <h2 class="sec-title">Aprendé a vender online<br>con quienes <em style="font-style:normal;color:var(--red)">lo hacen de verdad</em></h2>
-      <p class="sec-sub" style="max-width:460px;">
-        Creamos una comunidad de vendedores 100% gratuita en Skool donde compartimos estrategias reales, respondemos dudas y nos acompañamos para crecer juntos en el mundo del e-commerce.
-      </p>
-      <p class="sec-sub" style="max-width:460px;margin-top:1rem;">
-        No te vamos a cobrar nada. Solo queremos que más vendedores puedan acceder al conocimiento que a nosotros nos llevó años construir.
-      </p>
-      <div style="margin-top:2rem;">
-        <a href="https://www.skool.com/dooku-2944/about" class="btn-primary" target="_blank" style="font-size:1rem;padding:.9rem 2rem;">
-          🎓 Unirme gratis a la comunidad
-        </a>
-      </div>
-    </div>
-    <div class="skool-perks">
-      <div class="perk">
-        <div class="perk-icon">📚</div>
-        <div>
-          <div class="perk-title">Contenido exclusivo</div>
-          <div class="perk-text">Guías, estrategias y casos reales de cuentas que gestionamos.</div>
-        </div>
-      </div>
-      <div class="perk">
-        <div class="perk-icon">💬</div>
-        <div>
-          <div class="perk-title">Comunidad activa</div>
-          <div class="perk-text">Preguntá, compartí y aprendé con otros vendedores que están en la misma.</div>
-        </div>
-      </div>
-      <div class="perk">
-        <div class="perk-icon">🎯</div>
-        <div>
-          <div class="perk-title">Acceso directo al equipo</div>
-          <div class="perk-text">El equipo de Dooku responde dudas dentro de la comunidad, sin costo.</div>
-        </div>
-      </div>
-      <div class="perk">
-        <div class="perk-icon">🚀</div>
-        <div>
-          <div class="perk-title">Eventos y lives</div>
-          <div class="perk-text">Clases en vivo, análisis de cuentas y novedades del ecosistema MELI.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
 <!-- VIDEO CONSULTORA -->
 <section class="sec" id="conocenos">
   <div class="label">Conocenos</div>
@@ -909,9 +826,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="contact-buttons">
       <a href="https://wa.me/5491166136416?text=Hola%20Dooku%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" class="btn-primary" target="_blank">
         💬 WhatsApp
-      </a>
-      <a href="https://www.skool.com/dooku-2944/about" class="btn-secondary" target="_blank">
-        🎓 Comunidad Skool
       </a>
     </div>
     <p class="contact-note">
@@ -964,16 +878,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </button>
       <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
         <p itemprop="text">La Certificación Gold de Mercado Libre es el nivel más alto de reconocimiento que la plataforma otorga a consultoras especializadas. Implica conocimiento avanzado de la plataforma, resultados comprobados y compromiso con las buenas prácticas de venta. Dooku es una de las pocas consultoras en Argentina con esta distinción.</p>
-      </div>
-    </div>
-
-    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-      <button class="faq-q" itemprop="name" onclick="this.parentElement.classList.toggle('open')">
-        ¿Tienen una comunidad gratuita para vendedores?
-        <span class="faq-arrow">↓</span>
-      </button>
-      <div class="faq-a" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-        <p itemprop="text">Sí. Dooku tiene una comunidad gratuita de vendedores en Skool donde comparte estrategias reales, responde dudas y organiza clases en vivo. Es completamente gratuita y está abierta a cualquier vendedor que quiera aprender sobre eCommerce sin pagar nada.</p>
       </div>
     </div>
 
