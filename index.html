@@ -918,6 +918,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     window.dataLayer.push({ event: 'lead_whatsapp', wa_ubicacion: loc });
   }, true);
 
+  // 1b) INTENCIÓN "Abrió Calendly": click al botón de reservar.
+  //     NO es una conversión: sirve para medir cuántos abren el calendario
+  //     y no terminan de reservar (abandono + público para retargeting).
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
+    if (!a) return;
+    window.dataLayer.push({ event: 'calendly_abierto' });
+  }, true);
+
   // 2) CONVERSIÓN "Reunión agendada": Calendly confirma el turno (no el click).
   window.addEventListener('message', function (e) {
     if (e.data && e.data.event === 'calendly.event_scheduled') {
