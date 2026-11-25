@@ -240,13 +240,13 @@
     /* ── INSTAGRAM ── */
     .ig-head { display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap; }
     .ig-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2.6rem; }
-    .ig-card { position:relative; aspect-ratio:9/16; border-radius:18px; overflow:hidden; text-decoration:none; color:var(--cream); background:linear-gradient(160deg,#3a2622,#1E1D1B 60%); border:1px solid var(--border); display:flex; flex-direction:column; justify-content:flex-end; padding:1.2rem; transition:transform .3s, border-color .3s; }
-    .ig-card:hover { transform:translateY(-4px); border-color:rgba(220,70,51,.5); }
-    .ig-card .ig-play { position:absolute; top:1rem; right:1rem; width:38px; height:38px; border-radius:50%; background:rgba(241,234,230,.12); display:grid; place-items:center; font-size:.9rem; }
-    .ig-card .ig-big { position:absolute; top:1.2rem; left:1.2rem; right:3.4rem; font-size:1.35rem; font-weight:900; line-height:1.1; }
-    .ig-card .ig-big em { font-style:normal; color:var(--red); }
-    .ig-card .ig-meta { font-size:.76rem; color:var(--dim); }
-    .ig-card .ig-meta b { color:var(--cream); }
+    .ig-card { position:relative; aspect-ratio:9/16; border-radius:18px; overflow:hidden; text-decoration:none; color:var(--cream); background:var(--dark2); border:1px solid var(--border); display:flex; flex-direction:column; justify-content:flex-end; transition:transform .3s, border-color .3s; }
+    .ig-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+    .ig-card:hover { transform:translateY(-4px); border-color:rgba(220,70,51,.6); }
+    .ig-card:hover img { transform:scale(1.04); }
+    .ig-card .ig-play { position:absolute; top:.8rem; right:.8rem; width:36px; height:36px; border-radius:50%; background:rgba(30,29,27,.7); backdrop-filter:blur(6px); display:grid; place-items:center; font-size:.8rem; }
+    .ig-card .ig-meta { position:relative; padding:2.6rem .9rem .9rem; background:linear-gradient(transparent,rgba(0,0,0,.85)); font-size:.72rem; color:var(--dim); display:flex; flex-direction:column; gap:.15rem; }
+    .ig-card .ig-meta b { color:var(--cream); font-size:.86rem; line-height:1.25; }
     .ig-follow { display:inline-flex; align-items:center; gap:.5rem; text-decoration:none; font-weight:800; font-size:.9rem; padding:.7rem 1.2rem; border-radius:100px; border:1.5px solid rgba(241,234,230,.25); }
 
     /* ── AUDITORÍA ── */
@@ -318,7 +318,6 @@
       .badge { font-size:.64rem; }
       .steps { grid-template-columns:1fr; }
       .wa-float { padding:.85rem; } .wa-float .wa-label { display:none; }
-      .ig-card .ig-big { font-size:1.05rem; }
       .rubros { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; margin-right:-6vw; padding-right:6vw; padding-bottom:.3rem; }
       .rubros::-webkit-scrollbar { display:none; }
       .rubro { white-space:nowrap; flex-shrink:0; }
@@ -568,10 +567,10 @@
       <a href="https://www.instagram.com/dooku.latam/" target="_blank" rel="noopener" class="ig-follow reveal d1">📸 Seguinos en @dooku.latam</a>
     </div>
     <div class="ig-grid">
-      <a class="ig-card reveal" href="https://www.instagram.com/reel/DbtHJ1MDv-K/" target="_blank" rel="noopener"><span class="ig-play">▶</span><span class="ig-big">Así auditamos tu cuenta en <em>Dooku</em></span><span class="ig-meta"><b>Reel</b> · Proceso</span></a>
-      <a class="ig-card reveal d1" href="https://www.instagram.com/reel/DbofVbViN9I/" target="_blank" rel="noopener"><span class="ig-play">▶</span><span class="ig-big">Qué hacemos cuando nos llega una <em>cuenta nueva</em></span><span class="ig-meta"><b>Reel</b> · Onboarding</span></a>
-      <a class="ig-card reveal d2" href="https://www.instagram.com/reel/DbdaZmRCVpr/" target="_blank" rel="noopener"><span class="ig-play">▶</span><span class="ig-big">Top 10 <em>accionables</em> para vender en Mercado Libre</span><span class="ig-meta"><b>Reel</b> · Tips</span></a>
-      <a class="ig-card reveal d3" href="https://www.instagram.com/reel/DaDl0OGin1r/" target="_blank" rel="noopener"><span class="ig-play">▶</span><span class="ig-big">El reel más visto: <em>+89 mil</em> vistas</span><span class="ig-meta"><b>Reel</b> · Mirá por qué</span></a>
+      <a class="ig-card reveal" href="https://www.instagram.com/reel/DbtHJ1MDv-K/" target="_blank" rel="noopener" aria-label="Ver reel: Así auditamos tu cuenta"><img src="img/reel-DbtHJ1MDv-K.webp" alt="" loading="lazy" width="480" height="853"><span class="ig-play">▶</span><span class="ig-meta"><b>Así auditamos tu cuenta</b>Proceso</span></a>
+      <a class="ig-card reveal d1" href="https://www.instagram.com/reel/DbofVbViN9I/" target="_blank" rel="noopener" aria-label="Ver reel: Qué hacemos con una cuenta nueva"><img src="img/reel-DbofVbViN9I.webp" alt="" loading="lazy" width="480" height="853"><span class="ig-play">▶</span><span class="ig-meta"><b>Qué hacemos con una cuenta nueva</b>Onboarding</span></a>
+      <a class="ig-card reveal d2" href="https://www.instagram.com/reel/DbdaZmRCVpr/" target="_blank" rel="noopener" aria-label="Ver reel: Top 10 accionables para vender en MELI"><img src="img/reel-DbdaZmRCVpr.webp" alt="" loading="lazy" width="480" height="853"><span class="ig-play">▶</span><span class="ig-meta"><b>Top 10 accionables para vender en MELI</b>Tips</span></a>
+      <a class="ig-card reveal d3" href="https://www.instagram.com/reel/DaDl0OGin1r/" target="_blank" rel="noopener" aria-label="Ver reel: Vender en MELI no se trata de precio"><img src="img/reel-DaDl0OGin1r.webp" alt="" loading="lazy" width="480" height="853"><span class="ig-play">▶</span><span class="ig-meta"><b>Vender en MELI no se trata de precio</b>+89 mil vistas</span></a>
     </div>
   </div>
 </section>
