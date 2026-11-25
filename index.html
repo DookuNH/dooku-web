@@ -229,13 +229,6 @@
     .team-grid figure:hover img { transform:scale(1.04); }
     .team-grid figcaption { position:absolute; left:0; right:0; bottom:0; padding:2.5rem 1.1rem 1rem; background:linear-gradient(transparent,rgba(0,0,0,.78)); font-size:.86rem; font-weight:700; }
     .team-grid figcaption span { display:block; font-size:.72rem; font-weight:600; color:var(--dim); }
-    .yt { margin-top:3.5rem; display:grid; grid-template-columns:1fr 1.3fr; gap:3rem; align-items:center; }
-    .yt-facade { position:relative; aspect-ratio:16/9; border-radius:20px; overflow:hidden; border:1px solid var(--border); cursor:pointer; background:#000; }
-    .yt-facade img { width:100%; height:100%; object-fit:cover; opacity:.85; transition:opacity .3s; }
-    .yt-facade:hover img { opacity:1; }
-    .yt-facade .play { position:absolute; inset:0; margin:auto; width:72px; height:72px; border-radius:50%; background:var(--red); display:grid; place-items:center; box-shadow:0 10px 30px rgba(220,70,51,.5); }
-    .yt-facade .play::after { content:""; border-left:22px solid var(--cream); border-top:13px solid transparent; border-bottom:13px solid transparent; margin-left:5px; }
-    .yt-facade iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
 
     /* ── INSTAGRAM ── */
     .ig-head { display:flex; justify-content:space-between; align-items:flex-end; gap:1.5rem; flex-wrap:wrap; }
@@ -295,7 +288,7 @@
     @media (max-width:960px) {
       .nav-links { display:none; }
       .hero { padding-top:7rem; }
-      .hero-grid, .why-grid, .audit-grid, .yt { grid-template-columns:1fr; gap:2.6rem; }
+      .hero-grid, .why-grid, .audit-grid { grid-template-columns:1fr; gap:2.6rem; }
       .hero-photo { max-width:440px; margin:0 auto; width:100%; }
       .fc-gold { left:-.6rem; } .fc-quote { right:-.4rem; }
       .steps { grid-template-columns:1fr 1fr; gap:2rem; }
@@ -542,16 +535,6 @@
       <figure class="reveal d1"><img src="img/equipo-meli-sm.webp" srcset="img/equipo-meli-sm.webp 640w, img/equipo-meli.webp 960w" sizes="(max-width:960px) 46vw, 360px" width="640" height="853" alt="Equipo Dooku en Mercado Libre" loading="lazy"><figcaption>En Mercado Libre<span>Consultora Certificada Gold</span></figcaption></figure>
       <figure class="reveal d2"><img src="img/equipo-meli-experience-sm.webp" srcset="img/equipo-meli-experience-sm.webp 640w, img/equipo-meli-experience.webp 1200w" sizes="(max-width:960px) 46vw, 360px" width="640" height="853" alt="Equipo Dooku en Mercado Libre Experience" loading="lazy"><figcaption>Mercado Libre Experience<span>Siempre actualizados</span></figcaption></figure>
     </div>
-    <div class="yt">
-      <div class="reveal">
-        <h3 class="sec-title" style="font-size:clamp(1.5rem,2.6vw,2rem)">¿Quiénes están detrás de Dooku?</h3>
-        <p class="sec-sub">Mirá este video y conocé de primera mano cómo trabajamos y por qué somos distintos.</p>
-      </div>
-      <div class="yt-facade reveal d1" data-yt="YdKoEBMJAD0" role="button" tabindex="0" aria-label="Reproducir video de Dooku">
-        <img src="https://i.ytimg.com/vi/YdKoEBMJAD0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-        <span class="play"></span>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -683,12 +666,6 @@
     els.forEach(function (e) { io.observe(e); });
   })();
 
-  // ── Video de YouTube: se carga recién al hacer clic ──
-  document.querySelectorAll('.yt-facade').forEach(function (f) {
-    function play() { f.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + f.dataset.yt + '?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>'; }
-    f.addEventListener('click', play);
-    f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
-  });
 
   // ── Calendly: se carga recién cuando alguien quiere agendar. Le pasa los UTM del anuncio. ──
   (function () {
