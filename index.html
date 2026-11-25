@@ -609,6 +609,46 @@
     .faq-item.open .faq-a { max-height:300px; padding:.1rem 1.5rem 1.3rem; }
     .faq-a p { font-size:.9rem; color:var(--dim); line-height:1.75; }
 
+    /* ── CLIENTES ── */
+    .clients-head { display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; flex-wrap:wrap; }
+    .clients-kpis { display:flex; gap:2.5rem; flex-wrap:wrap; }
+    .ck-n { font-size:clamp(1.8rem,3vw,2.4rem); font-weight:900; line-height:1; }
+    .ck-n em { font-style:normal; color:var(--red); }
+    .ck-l { font-size:.76rem; color:var(--dim); margin-top:.3rem; max-width:150px; line-height:1.4; }
+    .marquee {
+      margin-top:1.6rem; overflow:hidden; display:flex; flex-direction:column; gap:.9rem;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+    }
+    .marquee-row { display:flex; gap:.9rem; width:max-content; animation:mq 60s linear infinite; }
+    .marquee-row.rev { animation-direction:reverse; animation-duration:70s; }
+    .marquee:hover .marquee-row { animation-play-state:paused; }
+    @keyframes mq { to { transform:translateX(-50%); } }
+    .client-chip {
+      white-space:nowrap; padding:.85rem 1.5rem; border-radius:14px;
+      background:rgba(241,234,230,.035); border:1px solid var(--border);
+      font-size:1.02rem; font-weight:800; letter-spacing:-.01em;
+      color:rgba(241,234,230,.8);
+    }
+    .client-chip small { display:block; font-size:.64rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--dim); margin-top:.1rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-row { animation:none; flex-wrap:wrap; width:auto; }
+      .marquee-row > [aria-hidden] { display:none !important; }
+    }
+    .rubros { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:2.4rem; }
+    .rubro {
+      font:600 .8rem 'Inter',sans-serif; padding:.5rem .95rem; border-radius:100px; cursor:pointer;
+      background:rgba(241,234,230,.04); border:1px solid var(--border); color:var(--dim);
+      transition:background .2s, border-color .2s, color .2s;
+    }
+    .rubro span { opacity:.55; font-weight:700; margin-left:.2rem; }
+    .rubro:hover { color:var(--cream); border-color:rgba(220,70,51,.35); }
+    .rubro.active { background:var(--red); border-color:var(--red); color:var(--cream); }
+    .rubro.active span { opacity:.8; }
+    .marquee[hidden], .clients-grid[hidden] { display:none; }
+    .clients-grid { display:flex; flex-wrap:wrap; gap:.9rem; margin-top:1.6rem; animation:fadein .3s ease; }
+    @keyframes fadein { from { opacity:0; transform:translateY(6px); } }
+
     /* ── RESPONSIVE ── */
     @media (max-width:860px) {
       .stats-strip { grid-template-columns:repeat(2,1fr); }
@@ -616,6 +656,7 @@
       .services-grid { grid-template-columns:1fr; }
       .videos-grid { grid-template-columns:1fr; }
       .audit-grid { grid-template-columns:1fr; gap:2rem; }
+      .clients-kpis { gap:1.6rem; }
       .audit-wrap { padding:2.8rem 1.6rem; }
       .nav-links { display:none; }
     }
@@ -638,6 +679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <img src="logo-claim.png" alt="Dooku - Consultora de eCommerce Argentina">
   </div>
   <ul class="nav-links">
+    <li><a href="#clientes">Clientes</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
     <li><a href="#auditoria">Auditoría gratis</a></li>
@@ -690,6 +732,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="stat-l">Certificación Gold Mercado Libre</div>
   </div>
 </div>
+
+<!-- CLIENTES -->
+<section class="sec" id="clientes">
+  <div class="clients-head">
+    <div>
+      <div class="label">Clientes</div>
+      <h2 class="sec-title">Marcas que ya crecen<br>con <em style="font-style:normal;color:var(--red)">Dooku</em></h2>
+      <p class="sec-sub">Desde PyMEs que dan sus primeros pasos en Mercado Libre hasta marcas consolidadas que necesitan escalar. Distintos rubros, el mismo método.</p>
+    </div>
+    <div class="clients-kpis">
+      <div><div class="ck-n"><em>+</em>50</div><div class="ck-l">marcas acompañadas</div></div>
+      <div><div class="ck-n">15</div><div class="ck-l">rubros distintos</div></div>
+    </div>
+  </div>
+
+  <div class="rubros" role="group" aria-label="Filtrar clientes por rubro"></div>
+
+  <div class="marquee" aria-label="Marcas con las que trabajamos">
+    <div class="marquee-row"></div>
+    <div class="marquee-row rev"></div>
+  </div>
+  <div class="clients-grid" hidden></div>
+</section>
+
+<script>
+  // ── CLIENTES: editar acá nombre y rubro (r) de cada marca. r:'' = solo aparece en "Todos". ──
+  (function () {
+    var RUBROS = {
+      moda:'👕 Moda e indumentaria', calzado:'👟 Calzado', belleza:'💄 Belleza y salud',
+      hogar:'🛋️ Hogar y deco', jugue:'🧸 Juguetes', auto:'🏍️ Automotor y motos',
+      agro:'🌱 Agro y jardín', depor:'⛳ Deportes', constr:'🧱 Construcción',
+      masivo:'🛍️ Consumo masivo', tecno:'💻 Tecnología', pet:'🐾 Pet',
+      segur:'🔒 Seguridad', retail:'🛒 Retail y marketplaces'
+    };
+    var C = [
+      ['Mercado Libre','retail'],['Zaira Jeans','moda'],['Skin Beauty','belleza'],['3N Golf','depor'],
+      ['Semillerías La Rural','agro'],['The Voor Store','hogar'],['Solufarma','belleza'],['Mekk Home','hogar'],
+      ['Lencería Shuly','moda'],['My Toys','jugue'],['Naif','moda'],['Kuati','masivo'],['Pergoland','hogar'],
+      ['Moto Avenida','auto'],['Nyb Shoes','calzado'],['Lovvit','masivo'],['Kankay','hogar'],['Endavant','moda'],
+      ['Repuestos','auto'],['DEC','masivo'],['Victoria F','moda'],['Bomba Project','moda'],['Howard','moda'],
+      ['Tienda Only','tecno'],['Benevia','masivo'],['Not Another','moda'],['Jazmeendeco','hogar'],
+      ['Juguetes Tradicionales','jugue'],['Automilano','auto'],['Range Materiales','constr'],
+      ['Sol de Verano','hogar'],['Seguridad Blanco','segur'],['Maison Black','jugue'],['Cultivando Sur','agro'],
+      ['Las Aya','hogar'],['Multi Perchas','hogar'],['Jazzy Teens','moda'],['Casa Pelliza','moda'],
+      ['Aitana','moda'],['Koken Art','hogar'],['Revende','hogar'],['Milkshake','moda'],['Naor','moda'],['Thania','moda'],
+      ['VILO','moda'],['Elvians','moda'],['Namato','moda'],['Romper Patrones','moda'],['Bechu','moda'],['Catha','moda'],
+      ['ICONS','hogar'],['MKR','auto'],['Ou','hogar'],['Ozikos','pet'],['Supply 360','hogar'],['Zielo','moda']
+    ];
+    var esc = function (t) { return t.replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+    var chip = function (c) { return '<span class="client-chip">' + esc(c[0]) + '</span>'; };
+
+    // Carrusel: todas las marcas repartidas en 2 filas, duplicadas para el loop infinito.
+    var rows = document.querySelectorAll('#clientes .marquee-row');
+    [C.filter(function (_, i) { return i % 2 === 0; }), C.filter(function (_, i) { return i % 2 === 1; })]
+      .forEach(function (list, i) {
+        var html = list.map(chip).join('');
+        rows[i].innerHTML = html + '<span aria-hidden="true" style="display:contents">' + html + '</span>';
+      });
+
+    // Filtros: solo rubros que tengan al menos una marca.
+    var bar = document.querySelector('#clientes .rubros');
+    var grid = document.querySelector('#clientes .clients-grid');
+    var marquee = document.querySelector('#clientes .marquee');
+    var btns = '<button class="rubro active" data-r="*">Todos <span>' + C.length + '</span></button>';
+    Object.keys(RUBROS).forEach(function (k) {
+      var n = C.filter(function (c) { return c[1] === k; }).length;
+      if (n) btns += '<button class="rubro" data-r="' + k + '">' + RUBROS[k] + ' <span>' + n + '</span></button>';
+    });
+    bar.innerHTML = btns;
+
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      bar.querySelectorAll('button').forEach(function (x) { x.classList.toggle('active', x === b); x.setAttribute('aria-pressed', x === b); });
+      var r = b.dataset.r;
+      if (r === '*') { grid.hidden = true; marquee.hidden = false; return; }
+      grid.innerHTML = C.filter(function (c) { return c[1] === r; }).map(chip).join('');
+      marquee.hidden = true; grid.hidden = false;
+      window.dataLayer && window.dataLayer.push({ event: 'filtro_clientes', rubro: r });
+    });
+  })();
+</script>
 
 <!-- NOSOTROS -->
 <section class="sec" id="nosotros">
