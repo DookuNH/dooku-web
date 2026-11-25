@@ -137,6 +137,11 @@
     .hero-photo .frame { border-radius:28px; overflow:hidden; aspect-ratio:4/5; border:1px solid var(--border); box-shadow:0 30px 80px rgba(0,0,0,.45); transform:rotate(1.5deg); }
     .hero-photo .frame img { width:100%; height:100%; object-fit:cover; object-position:50% 55%; }
     .float-card { position:absolute; background:rgba(30,29,27,.9); backdrop-filter:blur(10px); border:1px solid var(--border); border-radius:16px; padding:.85rem 1.1rem; box-shadow:0 14px 40px rgba(0,0,0,.4); }
+    .badge-link { color:var(--cream); text-decoration:none; transition:border-color .2s, background .2s; }
+    .badge-link:hover { border-color:rgba(245,197,24,.6); background:rgba(245,197,24,.08); }
+    .badge-link .arr { opacity:.6; margin-left:.2rem; }
+    a.fc-gold { color:var(--cream); text-decoration:none; transition:border-color .2s, transform .2s; }
+    a.fc-gold:hover { border-color:rgba(245,197,24,.6); transform:translateY(-2px); }
     .fc-gold { left:-2.2rem; bottom:2.6rem; display:flex; align-items:center; gap:.7rem; }
     .fc-gold .medal { font-size:1.7rem; }
     .fc-gold b { display:block; font-size:.9rem; }
@@ -339,7 +344,7 @@
   <div class="hero-glow"></div>
   <div class="hero-grid">
     <div>
-      <div class="badge reveal">🥇 Consultora <b>Certificada Gold</b> · Mercado Libre</div>
+      <a href="https://centrodepartners.mercadolibre.com.ar/solutions/consultoras/dooku" target="_blank" rel="noopener" class="badge badge-link reveal" data-gold="hero_badge">🥇 Consultora <b>Certificada Gold</b> · Mercado Libre <span class="arr">↗</span></a>
       <h1 class="reveal d1">Hacemos crecer tu negocio en <em>Mercado Libre</em></h1>
       <p class="hero-sub reveal d2">Somos <strong>sellers que asesoran sellers</strong>: operamos nuestra propia tienda y acompañamos a marcas de 15 rubros a vender más, con estrategia, datos y ejecución.</p>
       <div class="hero-buttons reveal d3">
@@ -356,7 +361,7 @@
       <div class="frame">
         <img src="img/equipo-oficina-sm.webp" srcset="img/equipo-oficina-sm.webp 640w, img/equipo-oficina.webp 1200w" sizes="(max-width:960px) 92vw, 520px" width="640" height="853" alt="El equipo de Dooku en su oficina" fetchpriority="high">
       </div>
-      <div class="float-card fc-gold"><span class="medal">🥇</span><div><b>Certificación Gold</b><span>Mercado Libre</span></div></div>
+      <a href="https://centrodepartners.mercadolibre.com.ar/solutions/consultoras/dooku" target="_blank" rel="noopener" class="float-card fc-gold" data-gold="hero_foto"><span class="medal">🥇</span><div><b>Certificación Gold</b><span>Ver perfil en Mercado Libre ↗</span></div></a>
       <div class="float-card fc-quote">Sellers que<br>asesoran <em>Sellers</em></div>
     </div>
   </div>
@@ -456,7 +461,7 @@
         </div>
         <div class="why-item reveal d1">
           <div class="why-ico">🥇</div>
-          <div><h3>Certificación Gold de Mercado Libre</h3><p>El máximo nivel que Mercado Libre otorga a consultoras: conocimiento avanzado de la plataforma, resultados comprobados y buenas prácticas.</p></div>
+          <div><h3>Certificación Gold de Mercado Libre</h3><p>El máximo nivel que Mercado Libre otorga a consultoras: conocimiento avanzado de la plataforma, resultados comprobados y buenas prácticas. <a href="https://centrodepartners.mercadolibre.com.ar/solutions/consultoras/dooku" target="_blank" rel="noopener" data-gold="por_que">Ver nuestro perfil en Mercado Libre ↗</a></p></div>
         </div>
         <div class="why-item reveal d2">
           <div class="why-ico">🧭</div>
@@ -701,6 +706,10 @@
     var a = e.target.closest && e.target.closest('a[href*="calendly.com"]');
     if (!a) return;
     window.dataLayer.push({ event: 'calendly_abierto' });
+  }, true);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-gold]');
+    if (a) window.dataLayer.push({ event: 'click_perfil_gold', gold_ubicacion: a.dataset.gold });
   }, true);
   window.addEventListener('message', function (e) {
     if (e.data && e.data.event === 'calendly.event_scheduled') window.dataLayer.push({ event: 'reunion_agendada' });
